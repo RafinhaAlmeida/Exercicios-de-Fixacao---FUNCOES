@@ -22,5 +22,5 @@ SELECT
         ELSE CONCAT('Sr. ', nome)
     END AS nome_arrumado
 FROM nomes;
-```
+``
 
