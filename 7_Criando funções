@@ -1,0 +1,58 @@
+
+
+/*a)*/
+DELIMITER //
+CREATE FUNCTION FATORIAL(n INT)
+RETURNS INT
+BEGIN
+    IF n <= 1 THEN
+        RETURN 1;
+    ELSE
+        RETURN n * FATORIAL(n - 1);
+    END IF;
+END;
+//
+DELIMITER ;
+
+/*b)*/
+DELIMITER //
+CREATE FUNCTION F_EXPONENCIAL(base INT, expoente INT)
+RETURNS INT
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = 1;
+    WHILE expoente > 0 DO
+        SET resultado = resultado * base;
+        SET expoente = expoente - 1;
+    END WHILE;
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+/*c)*/
+DELIMITER //
+CREATE FUNCTION E_PALINDROMO(palavra VARCHAR(50))
+RETURNS INT
+BEGIN
+    DECLARE tamanho INT;
+    DECLARE i INT;
+    DECLARE reversa VARCHAR(50);
+    
+    SET tamanho = LENGTH(palavra);
+    SET i = tamanho;
+    SET reversa = '';
+    
+    WHILE i > 0 DO
+        SET reversa = CONCAT(reversa, SUBSTRING(palavra, i, 1));
+        SET i = i - 1;
+    END WHILE;
+    
+    IF palavra = reversa THEN
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+END;
+//
+DELIMITER ;
