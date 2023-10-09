@@ -1,0 +1,13 @@
+
+/*a)*/
+DELIMITER //
+CREATE FUNCTION VALOR(preco DECIMAL(10, 2), quantidade INT)
+RETURNS DECIMAL(10, 2)
+BEGIN
+    RETURN preco * quantidade;
+END;
+//
+DELIMITER ;
+
+/* b)*/
+SELECT produto, VALOR(preco, quantidade) AS valor_total FROM produtos;
